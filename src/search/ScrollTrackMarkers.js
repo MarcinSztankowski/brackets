@@ -85,6 +85,21 @@ define(function (require, exports, module) {
         scrollbarTrackOffset = 2;
         break;
     }
+
+    /**
+     * Vertical space above and below the scrollbar.
+     * @return {number} amount Value in pixels
+     */
+    function getScrollbarTrackOffset() {
+        return scrollbarTrackOffset;
+    }
+
+    /**
+     * @param {number} offset Amount of vertical space above and below the scrollbar, in pixels
+     */
+    function setScrollbarTrackOffset(offset) {
+        scrollbarTrackOffset = offset;
+    }
     
     
     function _getScrollbar(editor) {
@@ -99,7 +114,7 @@ define(function (require, exports, module) {
         trackHt = $sb[0].offsetHeight;
 
         if (trackHt > 0) {
-            trackOffset = scrollbarTrackOffset;
+            trackOffset = getScrollbarTrackOffset();
             trackHt -= trackOffset * 2;
         } else {
             // No scrollbar: use the height of the entire code content
@@ -218,20 +233,6 @@ define(function (require, exports, module) {
         if (index !== -1) {
             $markedTickmark = $(".tickmark-track > .tickmark", editor.getRootElement()).eq(index).addClass("tickmark-current");
         }
-    }
-
-    /**
-     * @return {number} amount of vertical space above and below the scrollbar, in pixels
-     */
-    function getScrollbarTrackOffset() {
-        return scrollbarTrackOffset;
-    }
-
-    /**
-     * @param {number} offset Amount of vertical space above and below the scrollbar, in pixels
-     */
-    function setScrollbarTrackOffset(offset) {
-        scrollbarTrackOffset = offset;
     }
 
     // Private helper for unit tests
