@@ -95,7 +95,9 @@ define(function (require, exports, module) {
     }
 
     /**
-     * @param {number} offset Amount of vertical space above and below the scrollbar, in pixels
+     * Sets how much vertical space there's above and below the scrollbar, which depends
+     * on the OS and may also be affected by extensions
+     * @param {number} offset Value in pixels
      */
     function setScrollbarTrackOffset(offset) {
         scrollbarTrackOffset = offset;
